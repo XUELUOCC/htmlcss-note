@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        .container{
+            width:300px;
+            margin:100px auto;
+            border:1px solid #ddd;
+            padding:10px;
+            position: relative;
+            /* height:100px; */
+            overflow: hidden;
+            pointer-events:none;
+        }
+        .container::before{
+            content:attr(data-content);
+            position: absolute;
+            bottom:15px;
+            right:15px;
+            width:45px;
+            height:15px;
+            z-index:2;
+            line-height:15px;
+            text-align: center;
+            color:red;
+            pointer-events:auto;
+        }
+        .container::after{
+            content:'';
+            position:absolute;
+            bottom:14px;
+            right:15px;
+            width:45px;
+            height:15px;
+            z-index:1;
+            background-color: #fff;
+        }
+        p{
+            width:100%;
+            /* padding:10px 0 0px; */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            text-align: justify;
+            overflow: hidden;
+            word-wrap:break-word;  /*如果文本是英文的话，英文是不会自动换行的，需要设置word-wrap  word-break*/
+            word-break:break-all;  /*如果文本是英文的话，英文是不会自动换行的，需要设置word-wrap  word-break*/
+        }
+    </style>
+
+<body>
+    <div class="container" data-content="...展开">
+        <p>
+            bdfdfbhvgjhhbfvjsdfklbvhjsdfklbvsdffvbjsdflbvjsdfbvjdsflvbjsdfbvgbugdjfvbhjfd
+            不瞌睡放不进代付款时间了白
+            bdfdfbhvgjhhbfvjsdfklbvhjsdfklbvsdffvbjsdflbvjsdfbvjdsflvbjsdfbvgbugdjfvbhjfd
+        </p>
+    </div>
+    <script>
+        let divs=document.getElementsByClassName('container')[0];
+        divs.onclick=function(){
+            console.log(getComputedStyle(document.querySelector('.container'), ':before').getPropertyValue('content'))
+            let content=getComputedStyle(document.querySelector('.container'), ':before').getPropertyValue('content').toString()
+            console.log(content)
+            if(content.toString()=='收起'){
+                // this.setAttribute('data-content','...展开')
+                // document.getElementsByTagName('p')[0].style.display='-webkit-box'
+            }else if(content=='...展开'){
+                console.log('aaa')
+                // this.setAttribute('data-content','收起')
+                // document.getElementsByTagName('p')[0].style.display='inherit'
+            }
+            
+        }
+        // getComputedStyle(document.querySelector('.rule .title'), ':after').getPropertyValue('border-bottom')
+    </script>
+</body>
+</html>

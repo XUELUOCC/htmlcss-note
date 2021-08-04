@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .parent{
+            width:200px;
+            /* height:300px; */
+        }
+      .child {
+        width:30%;
+        height:0;
+        position: relative;
+        padding-top:22.5%;  /*通过padding-top值撑开元素的高度，此padding值就是元素的高，此元素的宽高符合图片的宽高比例，图片就自然符合：：padding,margin为百分比时，其依赖的是父元素的宽度*/
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .child img {
+        display: block;
+        position: absolute;
+        width:100%;
+        height:100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child">
+            <img  src="https://static3.doxue.com/uploads/2021/06/10/443ccdd63ee9b304e4d579496ef57fbe.jpg" alt="">
+            <img  src="https://static3.doxue.com/uploads/2021/06/10/443ccdd63ee9b304e4d579496ef57fbe.jpg" alt="">
+            <img  src="https://static3.doxue.com/uploads/2021/06/10/443ccdd63ee9b304e4d579496ef57fbe.jpg" alt="">
+      </div>
+    </div>
+  </body>
+</html>
+
